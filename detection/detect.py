@@ -41,7 +41,7 @@ def predict(img, confidence, st):
         
             
     st.subheader('Output Image')
-    st.image(im, channels="BGR", use_column_width=True)
+    st.image(im, channels="BGR", use_container_width=True)
 
         
 def predict_liver_mass(img, confidence, st):
@@ -61,4 +61,4 @@ def predict_liver_mass(img, confidence, st):
         im = Image.fromarray(im_array[..., ::-1])  # RGB PIL image
             
     st.subheader('Output Image')
-    st.image(im, channels="BGR", use_column_width=True)    
+    st.image(im, channels="BGR", use_container_width=True)    

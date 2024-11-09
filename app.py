@@ -68,11 +68,11 @@ def main():
 
         with col1:
             st.markdown("<hr style='border: 1px solid green'>", unsafe_allow_html=True)
-            st.image('DEMO_IMAGES/liver_m2.png', caption='Liver US image', use_column_width=True)
+            st.image('DEMO_IMAGES/liver_m2.png', caption='Liver US image', use_container_width=True)
 
         with col2:
             st.markdown("<hr style='border: 1px solid green'>", unsafe_allow_html=True)
-            st.image('DEMO_IMAGES/liver_m1.png', caption='Segmentation', use_column_width=True)
+            st.image('DEMO_IMAGES/liver_m1.png', caption='Segmentation', use_container_width=True)
 
 
     elif app_mode == "Object Detection LIVER MASS":
