@@ -1,4 +1,4 @@
-#import cv2 as cv
+import cv2 as cv
 import numpy as np
 from PIL import Image
 import detection.detect as detect
