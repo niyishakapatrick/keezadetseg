@@ -3,6 +3,6 @@ pillow==10.4.0
 opencv-python-headless
 ultralytics
 split-folders
-opencv-python==4.10.0.84
+opencv-python
 numpy
 
