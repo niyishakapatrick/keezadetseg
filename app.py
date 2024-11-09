@@ -1,10 +1,11 @@
-import cv2 as cv
+#import cv2 as cv
 import numpy as np
 from PIL import Image
 import detection.detect as detect
 import classification.classify as classify
 import segmentation.segment as segment
 import streamlit as st
+import io
 
 
 
@@ -85,11 +86,14 @@ def main():
         DEMO_IMAGE = "DEMO_IMAGES/liver_mass_benign_1.jpg"
         
         if img_file_buffer_detect is not None:
-            img = cv.imdecode(np.fromstring(img_file_buffer_detect.read(), np.uint8), 1)
-            image = np.array(Image.open(img_file_buffer_detect))
+            img_buffer = img_file_buffer_detect.read()
+            img = np.array(Image.open(io.BytesIO(img_buffer)))  # Convert to NumPy array directly
+            image = Image.open(io.BytesIO(img_buffer))  
         else:
-            img = cv.imread(DEMO_IMAGE)
-            image = np.array(Image.open(DEMO_IMAGE))
+            #img = cv.imread(DEMO_IMAGE)
+            #image = np.array(Image.open(DEMO_IMAGE))
+            img = np.array(Image.open(DEMO_IMAGE))  # Convert demo image to a NumPy array
+            image = Image.open(DEMO_IMAGE) 
         st.sidebar.text("Original Image")
         st.sidebar.image(image)
         
@@ -108,11 +112,16 @@ def main():
         DEMO_IMAGE = "DEMO_IMAGES/blood_cell.jpg"
         
         if img_file_buffer_detect is not None:
-            img = cv.imdecode(np.fromstring(img_file_buffer_detect.read(), np.uint8), 1)
-            image = np.array(Image.open(img_file_buffer_detect))
+            # img = cv.imdecode(np.fromstring(img_file_buffer_detect.read(), np.uint8), 1)
+            # image = np.array(Image.open(img_file_buffer_detect))
+            img_buffer = img_file_buffer_detect.read()
+            img = np.array(Image.open(io.BytesIO(img_buffer)))  # Convert to NumPy array
+            image = Image.open(io.BytesIO(img_buffer)) 
         else:
-            img = cv.imread(DEMO_IMAGE)
-            image = np.array(Image.open(DEMO_IMAGE))
+            # img = cv.imread(DEMO_IMAGE)
+            # image = np.array(Image.open(DEMO_IMAGE))
+            img = np.array(Image.open(DEMO_IMAGE))  # Convert demo image to NumPy array
+            image = Image.open(DEMO_IMAGE) 
         st.sidebar.text("Original Image")
         st.sidebar.image(image)
         
@@ -152,11 +161,17 @@ def main():
         DEMO_IMAGE = "DEMO_IMAGES/breast_benign_10.png"
         
         if img_file_buffer_segment is not None:
-            img = cv.imdecode(np.fromstring(img_file_buffer_segment.read(), np.uint8), 1)
-            image = np.array(Image.open(img_file_buffer_segment))
+            # img = cv.imdecode(np.fromstring(img_file_buffer_segment.read(), np.uint8), 1)
+            # image = np.array(Image.open(img_file_buffer_segment))
+
+            img_buffer = img_file_buffer_segment.read()
+            img = np.array(Image.open(io.BytesIO(img_buffer)))  # Convert to NumPy array from Pillow
+            image = Image.open(io.BytesIO(img_buffer))  
         else:
-            img = cv.imread(DEMO_IMAGE)
-            image = np.array(Image.open(DEMO_IMAGE))
+            # img = cv.imread(DEMO_IMAGE)
+            # image = np.array(Image.open(DEMO_IMAGE))
+            img = np.array(Image.open(DEMO_IMAGE))  # Convert demo image to NumPy array
+            image = Image.open(DEMO_IMAGE)  # Keep
         st.sidebar.text("Original Image")
         st.sidebar.image(image)
         
